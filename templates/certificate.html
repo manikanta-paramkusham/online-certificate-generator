@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate — {{ cert.student_name }}</title>
+  <meta name="description" content="Certificate of achievement for {{ cert.student_name }}">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="cert-page">
+  <div class="cert-preview tpl-{{ cert.template }}">
+    <div class="cert-inner">
+      <h1>CERTIFICATE</h1>
+      <p class="sub">of Achievement</p>
+      {% if cert.course and cert.title %}
+      <p class="program">{{ cert.title }}</p>
+      {% endif %}
+      <p class="label">This is to certify that</p>
+      <h2 class="name">{{ cert.student_name }}</h2>
+      <p class="label">has successfully completed {{ cert.course or cert.title }}</p>
+      <p class="company">awarded by {{ cert.company_name }}</p>
+      {% if cert.date %}
+      <p class="date">Date: {{ cert.date }}</p>
+      {% endif %}
+      <p class="cert-id">Certificate ID: {{ cert.unique_id }}</p>
+    </div>
+  </div>
+
+  <div class="cert-actions">
+    <a href="/cert/{{ cert.unique_id }}/download" class="btn-download">Download PDF</a>
+  </div>
+</body>
+</html>
