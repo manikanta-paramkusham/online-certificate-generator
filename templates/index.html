@@ -1,67 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certify — Create Certificates</title>
-  <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certify — Create Certificates</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <header>
+
+<header>
     <h1>Certify</h1>
     <p>Create personalized certificates for your students</p>
-  </header>
+</header>
 
-  <main>
+<main>
+
     <section class="card">
-      <h2>Create Certificates</h2>
-      <form id="createForm">
-        <div class="row">
-          <label for="company">Company / Organization Name</label>
-          <input type="text" id="company" name="company" autocomplete="organization" placeholder="X Company" required>
-        </div>
-        <div class="row">
-          <label for="title">Certificate Title (course / program)</label>
-          <input type="text" id="title" name="title" autocomplete="off" placeholder="Web Development Bootcamp" required>
-        </div>
-        <div class="row">
-          <span class="label-heading">Template</span>
-          <div class="templates" role="radiogroup" aria-label="Certificate template">
-            <label class="tpl"><input type="radio" name="template" value="classic" checked>
-              <span class="swatch classic"></span> Classic</label>
-            <label class="tpl"><input type="radio" name="template" value="modern">
-              <span class="swatch modern"></span> Modern</label>
-            <label class="tpl"><input type="radio" name="template" value="elegant">
-              <span class="swatch elegant"></span> Elegant</label>
-          </div>
-        </div>
-        <div class="row">
-          <label for="students">Students (one per line: Name, Course, Date)</label>
-          <textarea id="students" name="students" rows="10" autocomplete="off" placeholder="John Doe, Python Basics, 2026-06-30&#10;Jane Smith&#10;Mani, 2026-06-30&#10;Bob Wilson, Java Fundamentals, 2026-06-30" required></textarea>
-          <small>Format: <code>Name</code> · <code>Name, Date</code> · <code>Name, Course, Date</code></small>
-        </div>
-        <button type="submit" id="submitBtn">Generate Certificates</button>
-      </form>
+
+        <h2>Create Certificates</h2>
+
+        <form id="createForm">
+
+            <!-- Company -->
+
+            <div class="row">
+                <label for="company">
+                    Company / Organization Name
+                </label>
+
+                <input
+                    type="text"
+                    id="company"
+                    placeholder="X Company"
+                    required
+                >
+            </div>
+
+            <!-- Certificate Title -->
+
+            <div class="row">
+
+                <label for="title">
+                    Certificate Title (Course / Program)
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Web Development Bootcamp"
+                    required
+                >
+
+            </div>
+
+            <!-- Template -->
+
+            <div class="row">
+
+                <span class="label-heading">
+                    Template
+                </span>
+
+                <div class="templates">
+
+                    <label class="tpl">
+                        <input
+                            type="radio"
+                            name="template"
+                            value="classic"
+                            checked
+                        >
+
+                        <span class="swatch classic"></span>
+
+                        Classic
+                    </label>
+
+                    <label class="tpl">
+                        <input
+                            type="radio"
+                            name="template"
+                            value="modern"
+                        >
+
+                        <span class="swatch modern"></span>
+
+                        Modern
+                    </label>
+
+                    <label class="tpl">
+                        <input
+                            type="radio"
+                            name="template"
+                            value="elegant"
+                        >
+
+                        <span class="swatch elegant"></span>
+
+                        Elegant
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Input Method -->
+
+            <div class="row">
+
+                <span class="label-heading">
+                    Choose Input Method
+                </span>
+
+                <div class="input-method">
+
+                    <label class="method-card">
+
+                        <input
+                            type="radio"
+                            name="inputMethod"
+                            value="manual"
+                            checked
+                        >
+
+                        <span>📝 Manual Entry</span>
+
+                    </label>
+
+                    <label class="method-card">
+
+                        <input
+                            type="radio"
+                            name="inputMethod"
+                            value="csv"
+                        >
+
+                        <span>📄 Upload CSV</span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Manual Section -->
+
+            <div id="manualSection">
+
+                <div class="row">
+
+                    <label for="students">
+
+                        Students
+                        (one per line)
+
+                    </label>
+
+                    <textarea
+                        id="students"
+                        rows="10"
+                        placeholder="John Doe, Python Basics, 2026-06-30&#10;Jane Smith&#10;Manikanta, Full Stack, 2026-06-30"
+                    ></textarea>
+
+                    <small>
+
+                        Format:
+
+                        <code>Name</code>
+
+                        ·
+
+                        <code>Name, Date</code>
+
+                        ·
+
+                        <code>Name, Course, Date</code>
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <!-- CSV Section -->
+
+            <div id="csvSection" class="hidden">
+
+                <div class="row">
+
+                    <label for="csvFile">
+
+                        Upload Student CSV
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="csvFile"
+                        accept=".csv"
+                    >
+
+                    <small id="selectedFile">
+
+                        No file selected
+
+                    </small>
+
+                </div>
+
+                <div class="csv-actions">
+
+                    <a
+                        href="/static/sample_students.csv"
+                        download
+                        class="sample-btn"
+                    >
+
+                        Download Sample CSV
+
+                    </a>
+
+                </div>
+
+                <div
+                    id="csvPreview"
+                    class="csv-preview hidden"
+                >
+
+                </div>
+
+            </div>
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+
+                Generate Certificates
+
+            </button>
+
+        </form>
+
     </section>
 
-    <section class="card hidden" id="results">
-      <h2>Certificates Created <span id="resultCount" class="badge"></span></h2>
-      <p>Share each link with the student. They can view and download their PDF certificate.</p>
-      <div class="actions">
-        <button type="button" id="copyAll">Copy All Links</button>
-        <button type="button" id="downloadCsv">Download CSV</button>
-      </div>
-      <div class="table-wrap">
-        <table id="linksTable">
-          <thead>
-            <tr><th>Student</th><th>Unique ID</th><th>Link</th><th></th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+    <!-- Results -->
 
-  <script src="/static/app.js"></script>
+    <section
+        class="card hidden"
+        id="results"
+    >
+
+        <h2>
+
+            Certificates Created
+
+            <span
+                id="resultCount"
+                class="badge"
+            ></span>
+
+        </h2>
+
+        <p>
+
+            Share each link with the student.
+            They can view and download their PDF certificate.
+
+        </p>
+
+        <div class="actions">
+
+            <button
+                type="button"
+                id="copyAll"
+            >
+
+                Copy All Links
+
+            </button>
+
+            <button
+                type="button"
+                id="downloadCsv"
+            >
+
+                Download CSV
+
+            </button>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table id="linksTable">
+
+                <thead>
+
+                <tr>
+
+                    <th>Student</th>
+
+                    <th>Unique ID</th>
+
+                    <th>Link</th>
+
+                    <th></th>
+
+                </tr>
+
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="/static/app.js"></script>
+
 </body>
 </html>

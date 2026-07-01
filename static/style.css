@@ -157,3 +157,164 @@ td button { background: none; color: #2563eb; padding: 0.2rem 0.5rem; font-size:
   .cert-inner .name { font-size: 1.3rem; }
   .cert-inner { padding: 1.5rem 1rem; }
 }
+
+/* =====================================================
+   INPUT METHOD
+===================================================== */
+
+.input-method{
+  display:flex;
+  gap:15px;
+  margin-top:10px;
+  flex-wrap:wrap;
+}
+
+.method-card{
+  flex:1;
+  min-width:220px;
+  cursor:pointer;
+}
+
+.method-card input{
+  display:none;
+}
+
+.method-card span{
+  display:block;
+  padding:15px;
+  border:2px solid #cbd5e1;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  background:white;
+  transition:0.3s;
+}
+
+.method-card input:checked + span{
+  border-color:#2563eb;
+  background:#eff6ff;
+  color:#2563eb;
+}
+
+/* =====================================================
+ SECTIONS
+===================================================== */
+
+#manualSection,
+#csvSection{
+  margin-top:20px;
+}
+
+/* =====================================================
+ FILE UPLOAD
+===================================================== */
+
+input[type="file"]{
+  width:100%;
+  padding:14px;
+  border:2px dashed #cbd5e1;
+  border-radius:10px;
+  background:#f8fafc;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+input[type="file"]:hover{
+  border-color:#2563eb;
+  background:#eff6ff;
+}
+
+#selectedFile{
+  display:block;
+  margin-top:12px;
+  color:#2563eb;
+  font-weight:600;
+}
+
+/* =====================================================
+ SAMPLE CSV BUTTON
+===================================================== */
+
+.csv-actions{
+  margin-top:15px;
+}
+
+.sample-btn{
+  display:inline-block;
+  text-decoration:none;
+  background:#10b981;
+  color:white;
+  padding:10px 18px;
+  border-radius:8px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.sample-btn:hover{
+  background:#059669;
+}
+
+/* =====================================================
+ CSV PREVIEW
+===================================================== */
+
+.csv-preview{
+  margin-top:25px;
+  overflow-x:auto;
+}
+
+.csv-preview table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.csv-preview th{
+  background:#2563eb;
+  color:white;
+}
+
+.csv-preview td,
+.csv-preview th{
+  border:1px solid #e2e8f0;
+  padding:10px;
+}
+
+.csv-preview h4{
+  margin-bottom:12px;
+}
+
+.csv-count{
+  margin-bottom:12px;
+  color:#16a34a;
+  font-weight:600;
+}
+
+/* =====================================================
+ HIDDEN
+===================================================== */
+
+.hidden{
+  display:none !important;
+}
+
+/* =====================================================
+ MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+  .input-method{
+      flex-direction:column;
+  }
+
+  .method-card{
+      width:100%;
+  }
+
+  .sample-btn{
+      display:block;
+      width:100%;
+      text-align:center;
+  }
+
+}
