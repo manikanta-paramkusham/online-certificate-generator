@@ -100,33 +100,71 @@ td a { color: #2563eb; word-break: break-all; }
 td button { background: none; color: #2563eb; padding: 0.2rem 0.5rem; font-size: 0.8rem; font-weight: 400; }
 
 /* Certificate preview page */
-.cert-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem 1rem;
+.cert-page{
+
+  background:#e5e7eb;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-height:100vh;
+
+  padding:40px;
+}
+.cert-preview{
+  width:min(95vw,1000px);
+  aspect-ratio:1.414/1;
+
+  background:#fffef5;
+
+  border-radius:10px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:25px;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
-.cert-preview {
-  width: 100%;
-  max-width: 800px;
-  aspect-ratio: 1.414 / 1;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+.cert-inner{
+
+  width:100%;
+  height:100%;
+
+  position:relative;
+
+  padding:45px 60px;
+
+  border:4px solid #c9a227;
+
+  background:#fffef5;
+
+  box-sizing:border-box;
+
+  overflow:hidden;
 }
 
-.cert-inner {
-  text-align: center;
-  width: 100%;
-  border: 3px solid;
-  padding: 2.5rem 2rem;
-  position: relative;
+.cert-inner::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:10px;
+  left:10px;
+  right:10px;
+  bottom:10px;
+
+  border:2px solid #c9a227;
+
+  pointer-events:none;
 }
 
 .tpl-classic { background: #fffef5; }
@@ -150,7 +188,12 @@ td button { background: none; color: #2563eb; padding: 0.2rem 0.5rem; font-size:
 .cert-inner .date { font-size: 0.85rem; margin-top: 0.5rem; }
 .cert-inner .cert-id { font-size: 0.7rem; margin-top: 1.5rem; opacity: 0.7; }
 
-.cert-actions { margin-top: 1.5rem; }
+.cert-actions{
+
+  margin-top:25px;
+
+  text-align:center;
+}
 
 @media (max-width: 600px) {
   .cert-inner h1 { font-size: 1.5rem; }
@@ -317,4 +360,35 @@ input[type="file"]:hover{
       text-align:center;
   }
 
+}
+
+
+hr{
+
+  border:none;
+
+  border-top:1px solid #bdbdbd;
+
+  margin:30px 0;
+}
+
+.cert-inner h3{
+
+  font-size:28px;
+
+  margin-bottom:15px;
+}
+
+.cert-inner a{
+
+  color:#2563eb;
+
+  text-decoration:none;
+
+  font-weight:600;
+}
+
+.cert-inner a:hover{
+
+  text-decoration:underline;
 }
